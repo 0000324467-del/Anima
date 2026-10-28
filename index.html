@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ânima – Desenvolvimento e Psicologia</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    
+    <style>
+        /* Importação das fontes locais solicitadas */
+        @font-face {
+            font-family: 'Sacramento';
+            src: url('Sacramento-Regular.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('Montserrat-VariableFont_wght.ttf') format('truetype');
+        }
+
+        /* Fallbacks do Google Fonts caso precise testar sem os arquivos locais */
+        @import url('https://googleapis.com');
+
+        :root {
+            --cor-primaria: #CD853F;   /* Marrom/Terracota para tons éticos e terrosos */
+            --cor-secundaria: #BDD8A4; /* Verde suave para saúde mental e bem-estar */
+            --cor-detalhe: #FEDA18;    /* Amarelo para pontos de luz/destaque */
+            --cor-fundo-claro: #E4D9DC;/* Rosa/Cinza claro para fundos neutros */
+            --cor-suave: #FFD4D0;      /* Tom pastel para suavidade (corrigido de #FFD4D) */
+            --texto-escuro: #2b2b2b;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--texto-escuro);
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        .font-slogan {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.5rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-link {
+            color: var(--texto-escuro) !important;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--cor-primaria) !important;
+        }
+
+        /* Banner Principal */
+        .hero-section {
+            background: linear-gradient(135deg, var(--cor-suave) 0%, var(--cor-fundo-claro) 100%);
+            padding: 120px 0 80px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .btn-cta {
+            background-color: var(--cor-primaria);
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-cta:hover {
+            background-color: #b57030;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 0;
+        }
+        .titulo-secao {
+            position: relative;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        .titulo-secao::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--cor-secundaria);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Sobre Nós & Missão */
+        #sobre {
+            background-color: #ffffff;
+        }
+        .missao-box {
+            background-color: var(--cor-fundo-claro);
+            border-left: 5px solid var(--cor-primaria);
+            padding: 30px;
+            border-radius: 0 15px 15px 0;
+        }
+
+        /* Serviços */
+        #servicos {
+            background-color: rgba(228, 217, 220, 0.3);
+        }
+        .card-servico {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #ffffff;
+            height: 100%;
+        }
+        .card-servico:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .icone-servico {
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            background-color: var(--cor-suave);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Acreditação */
+        #acreditacao {
+            background-color: var(--cor-secundaria);
+            color: #2b2b2b;
+        }
+        .badge-crp {
+            background-color: var(--cor-detalhe);
+            color: #000;
+            font-weight: 700;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Contatos e Formulário */
+        #contato {
+            background-color: #ffffff;
+        }
+        .info-contato i {
+            color: var(--cor-primaria);
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        .form-control:focus {
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 0.25rem rgba(205, 133, 63, 0.25);
+        }
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-floating {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-floating:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #2b2b2b;
+            color: #ffffff;
+            padding: 40px 0 20px 0;
+        }
+        footer a {
+            color: var(--cor-secundaria);
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: var(--cor-detalhe);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Cabeçalho (Header) -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <!-- Espaço para Logomarca Oficial (Substitua o ícone pela sua tag <img> se preferir) -->
+                <i class="bi bi-heart-pulse-fill me-2" style="color: var(--cor-primaria); font-size: 1.8rem;"></i>
+                <div>
+                    <span class="fw-bold d-block lh-1" style="font-size: 1.4rem; color: var(--cor-primaria);">ÂNIMA</span>
+                    <small class="text-muted" style="font-size: 0.75rem; letter-spacing: 1px;">DESENVOLVIMENTO E PSICOLOGIA</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#acreditacao">Ética</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Banner Principal -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <h1 class="display-4 fw-bold mb-4">Um espaço em São Gonçalo do Rio Abaixo dedicado ao seu bem-estar!</h1>
+                    <p class="font-slogan text-muted mb-4">"Cuidamos de pessoas e organizações com ciência e sensibilidade."</p>
+                    <a href="https://wa.me" target="_blank" class="btn btn-cta btn-lg">
+                        <i class="bi bi-calendar-check me-2"></i>Agende sua Consulta
+                    </a>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center">
+                    <!-- Elemento visual abstrato usando cores da paleta -->
+                    <div style="width: 350px; height: 350px; background-color: var(--cor-secundaria); border-radius: 43% 57% 70% 30% / 45% 45% 55% 55%; margin: 0 auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 15px 30px rgba(0,0,0,0.1);">
+                        <i class="bi bi-emoji-smile" style="font-size: 8rem; color: #ffffff;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Sobre Nós & Missão -->
+    <section id="sobre">
+        <div class="container">
+            <h2 class="text-center titulo-secao">Sobre Nós</h2>
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-md-10 text-center mb-4">
